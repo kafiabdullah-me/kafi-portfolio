@@ -144,7 +144,7 @@ async function renderProjectDetail(el,slug){
   if(!snap){el.innerHTML="<div class='empty'>Project not found.</div>";return}
   const p={id:snap.id,...snap.data()};
   el.className="project-detail-wrap";
-  el.innerHTML=`<div class="detail-hero"><div class="detail-cover">${p.coverUrl?`<img src="${esc(p.coverUrl)}" alt="${esc(p.title||'Project cover')}">`:''}</div><div class="detail-copy"><p class="kicker">${esc(p.label||"PROJECT")}</p><h1>${esc(p.title||"Untitled")}</h1><p class="lede">${esc(p.description||"")}</p>${p.projectUrl?`<a class="button button-dark" href="${esc(p.projectUrl)}" target="_blank" rel="noopener">Visit project ↗</a>`:""}</div></div><div class="rich-content">${p.contentHtml||""}</div>`;
+  el.innerHTML=`<div class="detail-hero"><div class="detail-cover">${p.coverUrl?`<img src="${esc(p.coverUrl)}" alt="${esc(p.title||'Project cover')}">`:''}</div><div class="detail-copy"><p class="kicker">${esc(p.label||"PROJECT")}</p><h1>${esc(p.title||"Untitled")}</h1><p class="lede">${esc(p.description||"")}</p>${p.techStack?`<div class="project-tech"><p class="kicker">TECH STACK</p><div class="skill-list">${String(p.techStack).split(/[,\n]+/).map(t=>t.trim()).filter(Boolean).map(t=>`<span>${esc(t)}</span>`).join("")}</div></div>`:""}${p.projectUrl?`<a class="button button-dark" href="${esc(p.projectUrl)}" target="_blank" rel="noopener">Visit project ↗</a>`:""}</div></div><div class="rich-content">${p.contentHtml||""}</div>`;
   document.title=`${p.title} — Kafi Abdullah`;
 }
 
