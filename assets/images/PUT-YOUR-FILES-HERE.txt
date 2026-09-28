@@ -1,0 +1,4 @@
+Add your real assets here:
+- favicon.png  -> the logo used in navbar + browser tab
+- profile.jpg  -> your professional profile image
+You can replace these at any time without changing the HTML.
