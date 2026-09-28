@@ -1,70 +1,52 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Kafi Abdullah — Front-End Web Developer and HTML Email Template Designer.">
-  <meta name="theme-color" content="#f7f5f0">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <title>Kafi Abdullah — Web Developer & Email Designer</title>
-</head>
-<body data-page="home">
-<div class="page-loader"><span class="loader-ring"></span></div>
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="Kafi Abdullah home">
-    <img src="assets/images/favicon.png" alt="" onerror="this.style.display='none'"><span>Kafi Abdullah</span>
-  </a>
-  <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
-  <nav class="site-nav">
-    <a href="index.html">Home</a><a href="pages/projects.html">Projects</a><a href="pages/blog.html">Blog</a><a href="pages/about.html">About</a><a href="pages/contact.html">Contact</a>
-  </nav>
-</header>
-<div class="nav-backdrop"></div>
-
-<main>
-<section class="hero wrap">
-  <div class="hero-copy">
-    <p class="kicker">FRONT-END DEVELOPER · EMAIL DESIGNER</p>
-    <h1>Building <em>clean</em> digital experiences.</h1>
-    <p class="hero-lead">I’m Kafi Abdullah. I create responsive websites, landing pages and polished HTML email templates with a calm, practical approach to design.</p>
-    <div class="hero-actions"><a class="button button-dark" href="pages/projects.html">View selected work <span>↗</span></a><a class="text-button" href="mailto:contact.kafiabdullah@gmail.com">Email me</a></div>
-    <div class="hero-meta"><span>HTML & CSS</span><span>Responsive UI</span><span>Email Design</span></div>
-  </div>
-  <div class="hero-portrait">
-    <div class="portrait-frame"><img src="assets/images/profile.jpg" alt="Kafi Abdullah" onerror="this.style.display='none'"><div class="portrait-placeholder">KA</div></div>
-    
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6f8fb"><link rel="icon" href="assets/images/favicon.png"><link rel="stylesheet" href="assets/css/admin.css"><title>Kafi Abdullah — Admin</title></head>
+<body>
+<div id="page-loader" class="page-loader"><span class="loader-ring"></span></div>
+<section id="login-view" class="login-shell">
+  <div class="login-card">
+    <div class="admin-brand"><img src="assets/images/favicon.png" alt=""><div><strong>Portfolio Admin</strong><span>Content Management</span></div></div>
+    <p class="eyebrow">SECURE AREA</p><h1>Welcome back.</h1><p class="muted">Sign in to manage projects, articles and messages.</p>
+    <form id="login-form"><label>Email<input id="email" type="email" autocomplete="username" required value="contact.kafiabdullah@gmail.com"></label><label>Password<input id="password" type="password" autocomplete="current-password" required></label><button class="primary" type="submit">Sign in <span>→</span></button><p id="login-status" class="status"></p></form>
   </div>
 </section>
 
-<section class="section wrap">
-  <div class="section-head"><div><p class="kicker">SELECTED WORK</p><h2>A few things I’ve built.</h2></div><a href="pages/projects.html" class="arrow-link">All projects ↗</a></div>
-  <div id="featured-projects" class="card-grid"></div>
-</section>
+<div id="app-shell" class="app-shell hidden">
+  <aside class="sidebar">
+    <div class="admin-brand"><img src="assets/images/favicon.png" alt="Kafi Abdullah logo"><div><strong>Portfolio Admin</strong><span>Content Management</span></div></div>
+    <nav class="side-nav">
+      <button data-view="dashboard" class="active">Dashboard</button><button data-view="articles">Articles</button><button data-view="projects">Projects</button><button data-view="messages">Messages</button><button data-view="settings">Settings</button>
+    </nav>
+    <button id="logout" class="logout">Log out</button>
+  </aside>
+  <div class="mobile-bar"><button id="side-open" aria-label="Open menu">☰</button><span>Portfolio Admin</span><img src="assets/images/favicon.png" alt="Kafi Abdullah logo"></div>
+  <main class="admin-main">
+    <section id="view-dashboard" class="view active">
+      <div class="topbar"><div><p class="eyebrow">OVERVIEW</p><h1>Dashboard</h1><p class="muted">A quick view of your portfolio activity.</p></div><a class="view-site" href="../Public/index.html" target="_blank">View site ↗</a></div>
+      <div class="stats"><div><span>Total articles</span><strong id="stat-articles">—</strong></div><div><span>Published</span><strong id="stat-published">—</strong></div><div><span>Projects</span><strong id="stat-projects">—</strong></div><div><span>Messages</span><strong id="stat-messages">—</strong></div><div><span>Total visits</span><strong id="stat-visits">—</strong></div><div><span>Active now</span><strong id="stat-active">—</strong></div></div>
+      <div class="panel"><div class="panel-head"><div><h2>Recent messages</h2><p class="muted">Click a message to open the full detail.</p></div><button class="ghost" data-view-jump="messages">View all</button></div><div id="dashboard-messages"></div></div>
+    </section>
 
-<section class="section soft">
-  <div class="wrap split">
-    <div><p class="kicker">ABOUT</p><h2>Simple ideas.<br><em>Careful execution.</em></h2></div>
-    <div class="copy"><p>I enjoy turning ideas into fast, accessible and visually calm interfaces. I also design responsive HTML email templates that keep their structure across devices.</p><p>Alongside my studies, I’m building real projects and steadily expanding my front-end skills.</p><a class="arrow-link" href="pages/about.html">More about me ↗</a></div>
-  </div>
-</section>
+    <section id="view-articles" class="view">
+      <div class="topbar"><div><p class="eyebrow">CONTENT</p><h1>Articles</h1><p class="muted">Write, preview, save drafts and publish.</p></div><button class="primary" id="new-article">+ New article</button></div>
+      <div class="content-layout"><div class="list-panel"><input class="search" id="article-search" placeholder="Search articles…"><div id="article-list"></div></div><div class="editor-panel" id="article-editor"></div></div>
+    </section>
 
-<section class="section wrap">
-  <div class="section-head"><div><p class="kicker">FROM THE JOURNAL</p><h2>Recent writing.</h2></div><a href="pages/blog.html" class="arrow-link">Read all ↗</a></div>
-  <div id="latest-posts" class="card-grid"></div>
-</section>
+    <section id="view-projects" class="view">
+      <div class="topbar"><div><p class="eyebrow">WORK</p><h1>Projects</h1><p class="muted">Manage your selected work.</p></div><button class="primary" id="new-project">+ New project</button></div>
+      <div class="content-layout"><div class="list-panel"><input class="search" id="project-search" placeholder="Search projects…"><div id="project-list"></div></div><div class="editor-panel" id="project-editor"></div></div>
+    </section>
 
-<section class="contact-cta wrap">
-  <div><p class="kicker">LET’S WORK TOGETHER</p><h2>Have an idea?<br><em>Let’s make it useful.</em></h2></div>
-  <a class="contact-mail" href="mailto:contact.kafiabdullah@gmail.com"><span>contact.kafiabdullah@gmail.com</span><b>↗</b></a>
-</section>
-</main>
+    <section id="view-messages" class="view">
+      <div class="topbar"><div><p class="eyebrow">INBOX</p><h1>Messages</h1><p class="muted">Click any message to see the complete details.</p></div></div>
+      <div class="messages-layout"><div class="message-list" id="message-list"></div><div class="message-detail" id="message-detail"><div class="detail-empty">Select a message from the list.</div></div></div>
+    </section>
 
-<footer class="site-footer wrap"><div class="footer-brand"><img src="assets/images/favicon.png" alt="Kafi Abdullah logo"><div><strong>Kafi Abdullah</strong><p>Web Developer · Email Template Designer</p></div></div><div class="socials">
-<a href="https://www.linkedin.com/in/me-kafiabdullah" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5.2 3.5A2.2 2.2 0 1 1 5.2 8a2.2 2.2 0 0 1 0-4.5ZM3.3 9.5h3.8v11.2H3.3V9.5Zm6.1 0h3.6V11h.1c.5-.9 1.7-1.9 3.6-1.9 3.8 0 4.5 2.5 4.5 5.8v5.8h-3.8v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v5.2H9.4V9.5Z"/></svg></a>
-<a href="https://x.com/kafiabdullah" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M4 3.5h4.4l4 5.2 4.6-5.2h2.9l-6.2 7 6.5 10H16l-4.3-6.6-5.8 6.6H3l7.5-8.4L4 3.5Zm3.4 2 9.4 13.1h1.8L9.2 5.5H7.4Z"/></svg></a>
-<a href="https://www.facebook.com/me_kafiabdullah" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.6 1.7-1.6h1.8V3.8c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.4V10H7.2v3h2.9v8h3.4Z"/></svg></a>
-</div><small>© <span id="year"></span> Kafi Abdullah</small></footer>
-<script type="module" src="assets/js/main.js"></script>
-</body>
-</html>
+    <section id="view-settings" class="view">
+      <div class="topbar"><div><p class="eyebrow">SETTINGS</p><h1>Site settings</h1><p class="muted">Small controls and deployment notes.</p></div></div>
+      <div class="panel settings"><h2>Brand assets</h2><p>Place your <code>favicon.png</code> and profile image in <code>Public/assets/images/</code> and <code>Admin/assets/images/</code>. The same favicon is used in the navbar and browser tab.</p><h2>Firebase</h2><p>Both Public and Admin use the same Firebase project. Keep Authentication, Firestore and Storage rules restricted.</p><h2>Admin account</h2><p id="admin-email"></p></div>
+    </section>
+  </main>
+</div>
+<script type="module" src="assets/js/admin.js"></script>
+</body></html>
